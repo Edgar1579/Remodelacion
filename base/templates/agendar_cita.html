@@ -1,0 +1,100 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Cita</title>
+    <!-- Agrega aquí tus enlaces a tus archivos CSS, si es necesario -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<style>
+    body {
+        background-image: url('/static/img/hamaca.jpeg'); /* Ruta de la imagen */
+        background-size: cover; /* Cubrir todo el cuerpo */
+        background-repeat: no-repeat; /* No repetir la imagen */
+        background-position: center; /* Centrar la imagen */
+    }
+
+    .bg-custom-gray-light {
+        background-color: #FAD7A0;
+    }
+    
+</style>
+<body>
+    <div class="container">
+        <div class="row justify-content-between mt-3">
+            <div class="col-md-6">
+                <!-- Agrega tu botón en la parte superior izquierda -->
+            </div>
+            <div class="col-md-6 text-right">
+                <!-- Agrega tu botón en la parte superior derecha -->
+                <a href="{% url 'index' %}" class="btn btn-dark">Regresar al Inicio</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6">
+                <div class="card bg-custom-gray-light">
+                    <div class="card-body">
+                        <h1 class="card-title text-center">Agendar Cita</h1>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="paciente">Nombre:</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="paciente">Telefono:</label>
+                                <input type="text" id="nombre" name="nombre" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha">Fecha:</label>
+                                <input type="date" id="fecha" name="fecha" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="hora">Hora:</label>
+                                <input type="time" id="hora" name="hora" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="direccion">Dirección:</label>
+                                <input type="text" id="direccion" name="direccion" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="ciudad">Ciudad:</label>
+                                <input type="text" id="ciudad" name="ciudad" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="motivo">Servicio:</label>
+                                <textarea id="motivo" name="motivo" class="form-control"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-dark btn-block">Agendar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Agrega aquí tus enlaces a tus archivos JavaScript, si es necesario -->
+</body>
+<script>
+    // Función para mostrar una notificación
+    function mostrarNotificacion(mensaje, tipo) {
+        // Crear un elemento de alerta
+        var alerta = document.createElement('div');
+        alerta.classList.add('alert', 'alert-' + tipo);
+        alerta.textContent = mensaje;
+    
+        // Agregar la alerta al contenedor de notificaciones
+        document.getElementById('notificaciones').appendChild(alerta);
+    
+        // Desaparecer la alerta después de 5 segundos
+        setTimeout(function() {
+            alerta.remove();
+        }, 5000);
+    }
+    </script>
+    
+</html>

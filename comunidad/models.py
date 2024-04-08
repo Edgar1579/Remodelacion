@@ -19,9 +19,8 @@ class Usuario(models.Model):
     
     class Rol(models.TextChoices):
         ADMINISTRADOR="AD",_("Administrador")
-        CLIENTES="CL",_("Cliente")
         TRABAJADORES="TR",_("Trabajador")
-    rol=models.CharField(max_length=2,choices=Rol.choices,default=Rol.CLIENTES,verbose_name="Rol")
+    rol=models.CharField(max_length=2,choices=Rol.choices,default=Rol.ADMINISTRADOR,verbose_name="Rol")
     class TipoDocumento(models.TextChoices):
         CEDULA='CC',_("Cédula")
         TARJETA='TI',_("Tarjeta de Identidad")
@@ -40,5 +39,4 @@ class Usuario(models.Model):
         if self.segundo_nombre:
             return f"{self.primer_nombre} {self.segundo_nombre} {self.primer_apellido} {self.segundo_apellido}"
         else:
-            return f"{self.primer_nombre} {self.primer_apellido} {self.segundo_apellido}"
-    
+            return f"{self.primer_nombre} {self.primer_apellido} {self.segundo_apellido}" 

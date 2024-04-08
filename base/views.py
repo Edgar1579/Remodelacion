@@ -16,4 +16,7 @@ def principal_admin(request):
         "titulo": titulo,
     }
     return render(request, "index-admin.html", context)
-    
+
+def agendar_cita(request):
+    # Tu lógica para agendar citas aquí
+    return render(request, 'agendar_cita.html')    

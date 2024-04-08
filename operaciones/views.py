@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def agendar_cita(request):
+    # Tu lógica para agendar citas aquí
+    return render(request, 'agendar_cita.html')
